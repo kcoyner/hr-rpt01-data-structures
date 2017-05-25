@@ -1,6 +1,3 @@
-// const os = require('os');
-// const _ = require(`${os.homedir()}/.npm-global/lib/node_modules/underscore/underscore.js`);
-
 
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
@@ -20,9 +17,16 @@ stackMethods.push = function (value) {
   return this.stackSize;
 };
 
+stackMethods.pop = function () {
+  if (this.stackSize > 0) {
+    var popped = this.storage[this.stackSize];
+    delete this.storage[this.stackSize];
+    this.stackSize--;
+    return popped;
+  }
+};
+
 stackMethods.size = function () {
   return this.stackSize;
 };
 
-// var mystack = Stack();
-// console.log(mystack);
