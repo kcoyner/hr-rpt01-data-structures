@@ -1,6 +1,5 @@
 var BinarySearchTree = function(value) {
 
-
   var tree = new Node(value);
 
   var recurse = function (node, target) {
@@ -25,34 +24,43 @@ var BinarySearchTree = function(value) {
   };
 
   var recurseContains = function (node, target) {
+    if (node.value === target) {
+      return true;
+    }
     if (target > node.value) {
       if (node.right === null) {
-        node.right = new Node(target);
+        return false;
       } else {
-        recurse(node.right, target);
+        return recurseContains(node.right, target);
       }
     }
     if (target < node.value) {
       if (node.left === null) {
-        node.left = new Node(target);
+        return false;
       } else {
-        recurse(node.left, target);
+        return recurseContains(node.left, target);
       }
     }
   };
 
   tree.contains = function(value) {
-    // returns true or false
-    recurseContains(tree, value);
+    return recurseContains(tree, value);
   };
 
-  tree.depthFirstLog = function(value) {
-    var arr = [];
-    //arr.push(everyvalue)
-    // returns an array
+  var recurseLog = function (node, cb) {
+    cb(node.value);
+    if (node.left) {
+      recurseLog(node.left, cb);
+    }
+    if (node.right) {
+      recurseLog(node.right, cb);
+    }
   };
 
-  console.log('tree: ', tree);
+  tree.depthFirstLog = function(cb) {
+    return recurseLog(tree, cb);
+  };
+
   return tree;
 
 };
