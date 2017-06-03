@@ -44,11 +44,24 @@ var DoublyLinkedList = function() {
       var oldHead = list.head;
       delete list.head;
       list.head = oldHead.next;
+      list.head.previous = null;
       return oldHead.value;
     }
   };
+  list.removeTail = function() {
+    if (!list.tail) {
+        return null;
+    } else {
+        var oldTail = list.tail;
+        delete list.tail;
+        list.tail = oldTail.previous;
+        list.tail.next = null;
+        return oldTail.value;
+    }
+    };
 
-  list.contains = function(target) {
+
+    list.contains = function(target) {
 
     // if (list.head.value === target) {
     //   return true;
