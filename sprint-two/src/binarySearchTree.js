@@ -19,6 +19,7 @@ var BinarySearchTree = function(value) {
     }
   };
 
+  /* Time complexity: O(log n) */
   tree.insert = function(value) {
     recurse(tree, value);
   };
@@ -43,6 +44,7 @@ var BinarySearchTree = function(value) {
     }
   };
 
+  /* Time complexity:  O(log n) */
   tree.contains = function(value) {
     return recurseContains(tree, value);
   };
@@ -65,13 +67,6 @@ var BinarySearchTree = function(value) {
 
 };
 
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
-
-
-
 var Node = function(value) {
   var node = {};
 
@@ -83,4 +78,7 @@ var Node = function(value) {
 };
 
 
+/*
+ * Complexity: What is the time complexity of the above functions?
+ */
 
