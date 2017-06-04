@@ -2,8 +2,8 @@ var DoublyLinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-// previous is to the head and next is to the tail
 
+  /* Time complexity:  O(1) */
   list.addToHead = function(value) {
     var newNode = Node(value);
     if (!list.head) {
@@ -14,22 +14,15 @@ var DoublyLinkedList = function() {
       newNode.next = list.head;
       list.head = newNode;
     }
-    // if no head
-      // set new Node to Head
-    // if head
-      //  set list.head.previous to newNode
-      //  newNode.next is the currentHead(old head)
-      //  head gets assigned newNode
-  }
+  };
 
+  /* Time complexity:  O(1) */
   list.addToTail = function(value) {
     var newNode = Node(value);
-
     if (!list.head) {
       list.head = newNode;
       list.tail = newNode;
     }
-
     if (list.tail) {
       list.tail.next = newNode;
       newNode.previous = list.tail;
@@ -37,6 +30,7 @@ var DoublyLinkedList = function() {
     }
   };
 
+  /* Time complexity:  O(1) */
   list.removeHead = function() {
     if (!list.head) {
       return null;
@@ -48,25 +42,22 @@ var DoublyLinkedList = function() {
       return oldHead.value;
     }
   };
+
+  /* Time complexity:  O(1) */
   list.removeTail = function() {
     if (!list.tail) {
-        return null;
+      return null;
     } else {
-        var oldTail = list.tail;
-        delete list.tail;
-        list.tail = oldTail.previous;
-        list.tail.next = null;
-        return oldTail.value;
+      var oldTail = list.tail;
+      delete list.tail;
+      list.tail = oldTail.previous;
+      list.tail.next = null;
+      return oldTail.value;
     }
-    };
+  };
 
-
-    list.contains = function(target) {
-
-    // if (list.head.value === target) {
-    //   return true;
-    // }
-
+  /* Time complexity:  O(n) */
+  list.contains = function(target) {
     var recurse = function (node, target) {
       if (node.value === target) {
         return true;
@@ -76,25 +67,17 @@ var DoublyLinkedList = function() {
         return false;
       }
     };
-
     return recurse(list.head, target);
-
   };
-
   return list;
 };
 
 var Node = function(value) {
   var node = {};
-
   node.value = value;
   node.next = null;
   node.previous = null;
-
   return node;
 };
 
-/*
- * Complexity: What is the time complexity of the above functions?
- */
 

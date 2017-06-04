@@ -5,15 +5,9 @@ describe('doublyLinkedList', function() {
     linkedList = DoublyLinkedList();
   });
 
-  /*
-   * An .addToHead() method which takes a value and adds it to the front of the list.
-A .removeTail() method which removes the last node from the list and returns its value.
-*/
-
   it('should have a head and tail', function() {
     expect(linkedList).to.have.property('head');
     expect(linkedList).to.have.property('tail');
-
   });
 
   it('should have methods named "addToTail", "addToHead", "removeHead", "contains", and "removeTail"', function() {
@@ -27,7 +21,7 @@ A .removeTail() method which removes the last node from the list and returns its
   it('should have a previous property', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
-    expect(linkedList.previous).to.equal(4);
+    expect(linkedList.tail.previous.value).to.equal(4);
   });
 
   it('should designate a new tail when new nodes are added', function() {
